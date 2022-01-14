@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="./style/login.css">
+</head>
+<body>
+    <div class="navbar"></div>
+    <div id="main">
+        <form id="form">
+            <p>User Name</p>
+            <input id="username-login" type="text" placeholder="Enter username">
+            <p>Password</p>
+            <input id="password-login" type="password" placeholder="Enter password">
+            <input id="submit_btn" type="submit">
+        </form>
+    </div>
+</body>
+</html>
+<script type="module">
+    import navbar from "./components/navbar.js";
+    let dd = document.querySelector('.navbar');
+    dd.innerHTML = navbar();
+    let flag = false;
+    let form = document.getElementById('form');
+    form.addEventListener('submit',(event)=>{
+        event.preventDefault()
+        login()
+    })
+    async function login(){
+        try {
+            var login_data = {
+            username:document.getElementById('username-login').value,
+            password:document.getElementById('password-login').value,
+            }
+            login_data = JSON.stringify(login_data);
+            let login_url = 'https://masai-api-mocker.herokuapp.com/auth/login';
+            let response = await fetch(login_url, {
+                method : 'POST',
+                body : login_data,
+                headers : {
+    
+                    'Content-Type':'application/json',
+                }
+            });
+            let data = await response.json();
+            console.log('data from here',data);
+            let username = document.getElementById('username-login').value;
+            if(data.error === false){
+                getUser(username,data.token);
+            }
+            else if(data.error === true) {
+                alert('Enter valid username and password');
+                
+            }
+        }
+        catch(error) {
+            console.log('error',error);
+            alert('Enter valid username and password');
+
+        }
+        
+    }
+    async function getUser (username, token){
+        let api = `https://masai-api-mocker.herokuapp.com/user/${username}`;
+
+        let response = await fetch(api, {
+            headers : {
+                'Content-Type': 'application/json',
+
+                Authorization : `Bearer ${token}`,
+            },
+
+        });
+        let data = await response.json()
+        console.log(data);
+        approve(data)
+    }
+    function approve(data){
+        alert('login successful');
+        let p = document.getElementById('username-login').value;
+        console.log(p)
+        localStorage.setItem('user_name',JSON.stringify(p));
+        window.location.href = 'index.html';
+    }
+</script>

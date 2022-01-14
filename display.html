@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/index.css">
+    <link rel="stylesheet" href="/style/random.css">
+</head>
+<body>
+    <div id="navbar_div"></div>
+    <div id="display_div"></div>
+</body>
+</html>
+<script type="module">
+ import navbar from "./components/navbar.js";
+    var navb = document.getElementById('navbar_div');
+    navb.innerHTML = navbar();
+    import {getRandom,appendData} from "./scripts/random.js";
+
+    let display_div = document.getElementById('display_div');
+    let local_data = JSON.parse(localStorage.getItem('items_r'));
+    async function data(){
+        try {
+            let data  = await appendData(local_data,display_div)
+        }
+        catch(error){
+            console.log('error ',error)
+        }
+    }
+    data();
+</script>

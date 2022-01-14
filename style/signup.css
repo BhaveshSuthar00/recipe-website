@@ -1,0 +1,33 @@
+#main {
+    display: flex;
+}
+#form {
+    margin: auto;
+}
+#form>input {
+    display: block;
+    text-align: center;
+    padding: 4px 20px;
+    margin: 1%;
+    margin: auto;
+    margin-top: 2%;
+}
+#form>p {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 0%;
+    margin-top: 5%;
+}
+body {
+    background-color: orange
+}
+#submit_btn {
+    margin-top: 7%;
+    transition: width 2s, height 4s, transform 0.5s;
+}
+#submit_btn:hover {
+    transform: scale(1.3,1.4);
+    background-image: linear-gradient(orange,black);
+    color: white;
+    /* font-size: 23px; */
+}

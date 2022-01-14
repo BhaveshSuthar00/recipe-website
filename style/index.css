@@ -1,0 +1,39 @@
+#navbar {
+    display: flex;
+    padding-left: 4%;
+    padding-right: 4%;
+    width: 90%;
+    margin: auto;
+    border: solid black 1px;
+    justify-content: space-between;
+    border-radius: 20px;
+    background-image: linear-gradient(pink,rgb(255, 56, 56));
+  }
+  
+  #navbar:hover {
+    background-image: linear-gradient(pink,rgb(251, 126, 126));
+  }
+  #options {
+    display: flex;
+    gap: 20px;
+  }
+  h3>a {
+    text-decoration: none;
+    color: black;
+    font-size: 23px;
+  }
+  h3 {
+    transition: width 2s, height 6s, transform 0.3s;
+  }
+  h3:hover {
+    transform: scale(1.2,1.6);
+  }
+  #data {
+    display: grid;
+    grid-template-columns: repeat(4,25%);
+    justify-content: center;
+    padding: 5%;
+  }
+  img {
+    width: 30%;
+  }

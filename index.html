@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="./style/home.css">
+</head>
+<body>
+    <div class="navdiv"></div>
+    <div class="search_div">
+        <input  id="inputFood" type="text"  placeholder="Search dish">
+
+    </div>
+    <div id="display-div"></div>
+</body>
+</html>
+<script type="module">
+    let id;
+    import navbar from './components/navbar.js';
+    let navcontainer = document.querySelector('.navdiv')
+    navcontainer.innerHTML= navbar();
+    let searchin = document.getElementById('inputFood');
+    
+    
+    import { getData,appendData } from './scripts/showData.js';
+    searchin.addEventListener('input',function(){
+        
+        debounce(getFood,2000);
+    })
+    let display_div = document.getElementById('display-div');
+        
+    function debounce(fun,delay){
+        if(id){
+            clearTimeout(id);
+        }
+        id = setTimeout(function () {
+            fun()
+        }, delay);
+    }
+    async function getFood(){
+        display_div.innerHTML = null;
+        try {
+            let items = document.getElementById('inputFood').value;
+            if(items === null){
+                display_div.innerHTML = null;
+                return false;
+            }
+            let res = await getData(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${items}`)
+            let data = res.meals;
+            let dataresponse = await appendData(data,display_div);
+            console.log(data)
+        }
+        catch (error) {
+            console.log('error in searchFood')
+        }
+    }
+
+    var username = JSON.parse(localStorage.getItem('user_name'));
+    var name_h3 = document.querySelector('.username');
+    name_h3.textContent = `Welcome, ${username}`;
+</script>

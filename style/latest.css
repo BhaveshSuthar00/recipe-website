@@ -1,0 +1,41 @@
+#display_div {
+  display: grid;
+  width: 100%;
+  grid-gap: 20px;
+  margin-top: 2%;
+  grid-template-columns: repeat(4,1fr);
+}
+.main_div {
+height: 270px;
+border-end-end-radius: 20px;
+border-top-left-radius: 20px;
+transition: width 2s, height 6s, transform 0.5s;
+box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.main_div:hover {
+  transform: scale(1.1, 1.1);
+  background-image: linear-gradient(rgb(117, 56, 197),bisque);
+
+}
+.img_div {
+height: 80%;
+width: 100%;
+
+}
+.img_div>img {
+height: 100%;
+width: 100%;
+border-top-left-radius: 20px;
+}
+.text_div {
+display: flex;
+justify-content: space-between;
+}
+.text_div>p {
+margin: 1%;
+margin-top: 3%;
+}
+body {
+  background-image: linear-gradient(red,whitesmoke,yellow);
+
+}

@@ -1,0 +1,54 @@
+#display_div {
+    margin-top: 2%;
+}
+.main_div {
+    display: flex;
+    width: 100%;
+    
+}
+.text_div {
+    font-size: 25px;
+    width: 60%;
+    margin-left: 2%;
+}
+.img_div {
+    margin-top: 4%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 40%;
+    height: 500px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.img_div>img {
+    height: 500px;
+    width: 100%;
+}
+.ingredient_list>li {
+    list-style-type: none;
+    margin-top: 3%;
+}
+.ingredient_list>li:nth-child(odd):hover {
+    background-color: linear-gradient(red, yellow);
+    cursor: pointer;
+}
+.ingredient_list>li:nth-child(even):hover {
+    background-color:coral;
+    cursor: pointer;
+}
+body {
+    background-color:slategray;
+}
+.steps_div {
+    width: 90%;
+}
+.iframe {
+    width: 80%;
+    height: 400px;
+}
+.steps_div::before {
+    content: 'Instructions : ';
+}
+body {
+    background-image: linear-gradient(pink,rgb(235, 126, 126), rgb(241, 197, 116),rgb(117, 206, 117));
+}
